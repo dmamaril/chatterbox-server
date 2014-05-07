@@ -1,7 +1,7 @@
 // YOUR CODE HERE:
 
 var app = {
-    server: 'http://127.0.0.1:8080',
+    server: 'http://127.0.0.1:8080/1/classes/messages',
     username: 'anonymous',
     lastMessageId: 0,
 
@@ -19,19 +19,19 @@ var app = {
 
     loadAllMessages: function(){
       app.loadMsgs();
-      // setTimeout(app.loadAllMessages, 500);
+      // setTimeout(app.loadAllMessages, 1000);
     },
 
     handleSubmit: function(e){
       e.preventDefault();
-
+      location.reload();
       var message = {
         username: app.username,
         text: app.$text.val()
       };
 
       app.$text.val('');
-
+      console.log( 'line 34 ' , message)
       app.sendMsg(message);
     },
 
@@ -55,16 +55,16 @@ var app = {
         var message = messages[i-1];
         // check if objectId is in dom.
         if( $('#chats').find('.message[data-id='+message.objectId+']').length ){ continue; }
-        $('#chats').prepend(app.renderMessage(message));
+        $('#chats').append(app.renderMessage(message));
       }
     },
 
     loadMsgs: function(){
       $.ajax({
         url: app.server,
-        // data: { order: '-createdAt'},
         contentType: 'application/json',
         success: function(json){
+          console.log(json, typeof json);
           app.processNewMessages(json.results);
         },
         complete: function(){
@@ -80,7 +80,6 @@ var app = {
         data: JSON.stringify(message),
         contentType: 'application/json',
         success: function(json){
-          //console.log(json);
           app.processNewMessage(message, json.objectId);
         },
         complete: function(){

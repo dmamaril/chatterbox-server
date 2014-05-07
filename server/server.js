@@ -27,6 +27,9 @@ var handleRequest = function (request, response) {
     reponse.end();
   }
 
+
+
+  // ***** POST ****** //
   if (request.method === 'POST') {
     request.on('data', function (data) {
       body += data
@@ -39,18 +42,27 @@ var handleRequest = function (request, response) {
     });
   }
 
+
+
+  // ***** GET ***** //
   if (request.method === 'GET') {
     // grab existing messages in ./messages and push all to results
     fs.readFile('./messages', function (err, data) {
-      var temp = JSON.parse(data);
-      for (var i = 0 ; i < temp.length ; i++) {
-        storage.results.push(temp[i]);
+      if (data) {
+        var temp = JSON.parse(data);
+        storage.results = [];
+        for (var i = 0 ; i < temp.length ; i++) {
+          storage.results.push(temp[i]);
+        }
+        storage.results.reverse();
       }
     });
     headersCopy['Content-type'] = 'application/json';
     response.write(JSON.stringify({results: storage.results}));
     response.end();
   }
+
+
   response.end('Goodbye!');
 };
 
