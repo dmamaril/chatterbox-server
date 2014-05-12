@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>chatterbox</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+    <!-- dependencies -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+
+
+  </head>
+<body>
+
+    <div id="main">
+      <h1>chatter<em>box</em></h1><small>with Node.js by <a href="http://www.donmamaril.io">donmamaril.io</a></small>
+    </div>
+
+
+    <div id='chats'></div>
+    <div id='inputMsg'></div>
+
+
+    <!-- your scripts -->
+    <script src="scripts/BackboneView.js"></script>
+    <script src="scripts/BackboneModel.js"></script>
+  
+    <script> 
+    $(function () {
+      var app = new App;
+      var appView = new AppView({ model: app });
+    });
+    </script>
+
+
+  </body>
+</html>
