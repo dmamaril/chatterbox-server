@@ -1,8 +1,8 @@
 {
   "name": "chatterbox",
   "version": "0.0.1",
-  "main": "server/main.js",
-  "script": {
+  "main": "server/server.js",
+  "scripts": {
     "start" : "node server/server.js"
   },
   "author": "Hack Reactor",
