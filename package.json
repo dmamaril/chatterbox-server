@@ -4,7 +4,7 @@
   "main": "server/main.js",
   "script": {
     "start" : "node server/server.js"
-  }
+  },
   "author": "Hack Reactor",
   "license": "Copyright 2013, Hack Reactor. All rights reserved.",
   "dependencies": {},
