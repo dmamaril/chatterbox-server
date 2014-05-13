@@ -66,7 +66,7 @@ var InputView = Backbone.View.extend({
   sendToServer: function (message, collection) {
     $.ajax({
       // url: 'http://127.0.0.1:8080',
-      url: 'http://buddybox.azurewebsites.net/'
+      url: 'http://buddybox.azurewebsites.net/',
       type: 'POST',
       data: JSON.stringify(message),
       complete: function () {

@@ -26,7 +26,7 @@ var App = Backbone.Model.extend({
   fetchMsgs: function (context, app) { 
     $.ajax({
       // url: 'http://127.0.0.1:8080',
-      url: 'http://buddybox.azurewebsites.net/'
+      url: 'http://buddybox.azurewebsites.net/',
       type: 'GET',
       success: function (messages) {
         var messages = messages.results;
