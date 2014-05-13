@@ -49,8 +49,9 @@ var handleRequest = function (request, response) {
 
 
 // ****** START NODE SERVER ****** //
+var port = process.env.PORT || 8080;
 require('http')
   .createServer(handleRequest)
-  .listen(8080, '127.0.0.1');
+  .listen(port);
 console.log('Node Server Started!');
 // ****** END NODE SERVER ****** //
